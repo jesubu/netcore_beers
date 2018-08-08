@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using apibeers.Data;
 using apibeers.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -12,16 +13,19 @@ namespace apibeers.Controllers
     [ApiController]
     public class BeersController : ControllerBase
     {
+        public BeersController()
+        {
+
+        }
         [Route("allBeers")]
         [HttpGet]
-        public IEnumerable<Beer> GetAll()
-        {
-            return new[]
-            {
-                new Beer{ Name="Voll Damm",Abv=7.4},
-                new Beer{ Name="CruzCampo", Abv=4.5}
-            };
+        public IEnumerable<Beer> GetAll() => BeersRespository.Beers;
 
+        [HttpPost]
+        public IActionResult AddBeer(Beer beer)
+        {
+            BeersRespository.Add(beer);
+            return new StatusCodeResult((int)System.Net.HttpStatusCode.Created);
         }
     }
 }
