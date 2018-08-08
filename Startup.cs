@@ -41,7 +41,7 @@ namespace apibeers
             }
 
             app.UseHttpsRedirection();
-            app.UseMvc();
+            app.UseMvc(x=>x.MapRoute("default","{controller}/{action}"));
         }
     }
 }
