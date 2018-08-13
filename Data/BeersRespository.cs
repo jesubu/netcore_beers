@@ -1,4 +1,5 @@
 ﻿using apibeers.Models;
+using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,8 +16,8 @@ namespace apibeers.Data
         {
             _beers = new List<Beer>();
             _beers.AddRange(new[] {
-                new Beer{ Name="Voll Damm",Abv=7.4},
-                new Beer{ Name="CruzCampo", Abv=4.5}
+                new Beer{ Id=1, Name="Voll Damm",Abv=7.4},
+                new Beer{ Id=2, Name="CruzCampo", Abv=4.5}
             });
         }
 
@@ -24,6 +25,11 @@ namespace apibeers.Data
         {
             _beers.Add(beer);
             //throw new NotImplementedException();
+        }
+
+        public static Beer GetBeerById(int id)
+        {
+            return _beers.SingleOrDefault(x => x.Id == id); //retorna null cuando no hay 
         }
     }
 }

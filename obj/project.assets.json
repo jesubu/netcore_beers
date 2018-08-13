@@ -12218,23 +12218,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\fjdia\\.nuget\\packages\\": {},
+    "C:\\Users\\fjdiaz\\.nuget\\packages\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Desarrollo\\netCore\\apibeers\\apibeers.csproj",
+      "projectUniqueName": "C:\\Desarrollo\\net_core\\netcore_beers\\apibeers.csproj",
       "projectName": "apibeers",
-      "projectPath": "D:\\Desarrollo\\netCore\\apibeers\\apibeers.csproj",
-      "packagesPath": "C:\\Users\\fjdia\\.nuget\\packages\\",
-      "outputPath": "D:\\Desarrollo\\netCore\\apibeers\\obj\\",
+      "projectPath": "C:\\Desarrollo\\net_core\\netcore_beers\\apibeers.csproj",
+      "packagesPath": "C:\\Users\\fjdiaz\\.nuget\\packages\\",
+      "outputPath": "C:\\Desarrollo\\net_core\\netcore_beers\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\fjdia\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\fjdiaz\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [

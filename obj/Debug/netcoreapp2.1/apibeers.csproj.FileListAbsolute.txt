@@ -11,3 +11,17 @@ D:\Desarrollo\netCore\apibeers\obj\Debug\netcoreapp2.1\apibeers.RazorTargetAssem
 D:\Desarrollo\netCore\apibeers\bin\Debug\netcoreapp2.1\apibeers.pdb
 D:\Desarrollo\netCore\apibeers\obj\Debug\netcoreapp2.1\apibeers.dll
 D:\Desarrollo\netCore\apibeers\obj\Debug\netcoreapp2.1\apibeers.pdb
+C:\Desarrollo\net_core\netcore_beers\bin\Debug\netcoreapp2.1\apibeers.deps.json
+C:\Desarrollo\net_core\netcore_beers\bin\Debug\netcoreapp2.1\apibeers.runtimeconfig.json
+C:\Desarrollo\net_core\netcore_beers\bin\Debug\netcoreapp2.1\apibeers.runtimeconfig.dev.json
+C:\Desarrollo\net_core\netcore_beers\bin\Debug\netcoreapp2.1\apibeers.dll
+C:\Desarrollo\net_core\netcore_beers\bin\Debug\netcoreapp2.1\apibeers.pdb
+C:\Desarrollo\net_core\netcore_beers\obj\Debug\netcoreapp2.1\apibeers.csprojAssemblyReference.cache
+C:\Desarrollo\net_core\netcore_beers\obj\Debug\netcoreapp2.1\apibeers.csproj.CoreCompileInputs.cache
+C:\Desarrollo\net_core\netcore_beers\obj\Debug\netcoreapp2.1\apibeers.RazorAssemblyInfo.cache
+C:\Desarrollo\net_core\netcore_beers\obj\Debug\netcoreapp2.1\apibeers.RazorAssemblyInfo.cs
+C:\Desarrollo\net_core\netcore_beers\obj\Debug\netcoreapp2.1\apibeers.AssemblyInfoInputs.cache
+C:\Desarrollo\net_core\netcore_beers\obj\Debug\netcoreapp2.1\apibeers.AssemblyInfo.cs
+C:\Desarrollo\net_core\netcore_beers\obj\Debug\netcoreapp2.1\apibeers.RazorTargetAssemblyInfo.cache
+C:\Desarrollo\net_core\netcore_beers\obj\Debug\netcoreapp2.1\apibeers.dll
+C:\Desarrollo\net_core\netcore_beers\obj\Debug\netcoreapp2.1\apibeers.pdb
