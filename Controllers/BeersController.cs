@@ -33,8 +33,16 @@ namespace apibeers.Controllers
         [HttpPost]
         public IActionResult AddBeer([FromBody]Beer beer)
         {
-            BeersRespository.Add(beer);
-            return new StatusCodeResult((int)System.Net.HttpStatusCode.Created);
+            if (ModelState.IsValid)
+            {
+                BeersRespository.Add(beer);
+                return new StatusCodeResult((int)System.Net.HttpStatusCode.Created);
+            }
+            else
+            {
+                return BadRequest();
+            }
+
         }
 
         [Route("BeerById/{id}")]
