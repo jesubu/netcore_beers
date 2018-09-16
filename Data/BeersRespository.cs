@@ -7,12 +7,13 @@ using System.Threading.Tasks;
 
 namespace apibeers.Data
 {
-    public static class BeersRespository
+    public class BeersRespository : IBeersRespository
     {
-        private static List<Beer> _beers;
-        public static IEnumerable<Beer> Beers => _beers;
 
-        static BeersRespository()
+        private List<Beer> _beers;
+        public IEnumerable<Beer> Beers => _beers;
+
+        public BeersRespository()
         {
             _beers = new List<Beer>();
             _beers.AddRange(new[] {
@@ -21,13 +22,13 @@ namespace apibeers.Data
             });
         }
 
-        public  static void Add(Beer beer)
+        public  void Add(Beer beer)
         {
             _beers.Add(beer);
             //throw new NotImplementedException();
         }
 
-        public static Beer GetBeerById(int id)
+        public Beer GetBeerById(int id)
         {
             return _beers.SingleOrDefault(x => x.Id == id); //retorna null cuando no hay 
         }

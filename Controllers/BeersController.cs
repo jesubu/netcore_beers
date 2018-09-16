@@ -17,25 +17,40 @@ namespace apibeers.Controllers
     //  --> Si el content-type es cualquier otro...estamos en una APIRest, 
     //      no tenemos que poner clausula ninguna.
     //
+    // https://localhost:44335/api/Beers/allBeers
 
+
+        //la dependencia permite injectar servicios.
+        //en netcore esta implementado de serie, una diferencia con mvc5
+        //vamos a injectar las depencias de nuestros controladores automaticamente
+        //
+        //
+        //
+
+        //PRINCIPIO DE RESPOSABILIDAD UNICA
+        //cada clase deberia hacer una única tarea.
     [Route("api/[controller]")]
     [ApiController]
     public class BeersController : ControllerBase
     {
-        public BeersController()
+        private readonly IBeersRespository _beersRespository;
+
+        public BeersController( IBeersRespository beersRespository)
         {
+            this._beersRespository = beersRespository;
 
         }
         [Route("allBeers")]
         [HttpGet]
-        public IEnumerable<Beer> GetAll() => BeersRespository.Beers;
+        public IEnumerable<Beer> GetAll() => _beersRespository.Beers;
 
+        //se podría poner una llamada a un servicio y no ponerlo en el constructor [FromServices] IEmail email
         [HttpPost]
         public IActionResult AddBeer([FromBody]Beer beer)
         {
             if (ModelState.IsValid)
             {
-                BeersRespository.Add(beer);
+                _beersRespository.Add(beer);
                 return new StatusCodeResult((int)System.Net.HttpStatusCode.Created);
             }
             else
@@ -49,7 +64,7 @@ namespace apibeers.Controllers
         [HttpGet]
         public IActionResult GetBeerById(int id)
         {
-            var beer= BeersRespository.GetBeerById(id);
+            var beer= _beersRespository.GetBeerById(id);
             if (beer == null)
             {
                 return NotFound($"Beer with Id:{id} not found");
