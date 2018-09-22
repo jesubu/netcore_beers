@@ -9,6 +9,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="autofac" Version="4.8.1" />
+    <PackageReference Include="autofac.extensions.dependencyInjection" Version="4.3.0" />
     <PackageReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.1.1" />
   </ItemGroup>

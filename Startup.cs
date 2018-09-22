@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using apibeers.Data;
+using Autofac;
+using Autofac.Extensions.DependencyInjection;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -24,25 +26,38 @@ namespace apibeers
         public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
-        public void ConfigureServices(IServiceCollection services)
+        //public void ConfigureServices(IServiceCollection services)
+        public IServiceProvider ConfigureServices(IServiceCollection services)
         {
+            //cuando utilizamos un proveedor externo, por ejem. Autofac, para la inyeccion de dependencias
+            //la clase ConfigureServices, no retorna void, sino un objeto tipo IServiceProvider
+
             //0:41
 
 
-            //services.AddTransient<BeersRespository>();
-            //AddTransient-->el controlador se crea una vez por cada petición
+            ////services.AddTransient<BeersRespository>();
+            ////AddTransient-->el controlador se crea una vez por cada petición
 
-            //services.AddSingleton<BeersRespository>();
-            //se crea solo una instancia del controlador, la primera vez que sea solicitada
-            services.AddSingleton<IBeersRespository, BeersRespository>(); // -->El sistema de inyeccion de dependencia es quien
-            //crea el objeto y hace el dispose. el asume 
-            //services.AddSingleton<IBeersRespository> ( new BeersRespository()); // -->yo indico al inyector el objeto y soy quien lo crea
-            //ocurre que aki no hace el dispose.
+            ////services.AddSingleton<BeersRespository>();
+            ////se crea solo una instancia del controlador, la primera vez que sea solicitada
+            //services.AddSingleton<IBeersRespository, BeersRespository>(); // -->El sistema de inyeccion de dependencia es quien
+            ////crea el objeto y hace el dispose. el asume 
+            ////services.AddSingleton<IBeersRespository> ( new BeersRespository()); // -->yo indico al inyector el objeto y soy quien lo crea
+            ////ocurre que aki no hace el dispose.
 
-            //services.AddScoped<BeersRespository>();
-            //es singleton solo en el contexto, solo en el contexto de la petición
+            ////services.AddScoped<BeersRespository>();
+            ////es singleton solo en el contexto, solo en el contexto de la petición
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+
+            var builder = new ContainerBuilder();
+
+            builder.RegisterType<BeersRespository>().As<IBeersRespository>().SingleInstance();
+            builder.Populate(services);
+
+            var container = builder.Build();
+            return new AutofacServiceProvider(container);
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
