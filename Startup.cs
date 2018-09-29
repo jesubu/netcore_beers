@@ -66,11 +66,16 @@ namespace apibeers
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
-            //app.UseMiddleware<TimerMiddleware>();
-            //app.UserTime();
-            app.UserTime(new TimerMiddlewareOptions()
+            ////app.UseMiddleware<TimerMiddleware>();
+            ////app.UserTime();
+            //app.UserTime(new TimerMiddlewareOptions()
+            //{
+            //    Text = "Time elapse"
+            //});
+
+            app.UserTime(options =>
             {
-                Text = "Time elapse"
+                options.SetDefaultMessage();
             });
 
 
