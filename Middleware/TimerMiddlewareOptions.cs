@@ -14,9 +14,9 @@ namespace apibeers.Middleware
             Text = "took";
         }
 
-        public void SetDefaultMessage()
+        public void SetDefaultMessage(string value)
         {
-            Text = "Took 2";
+            Text = value;
         }
     }
 }
