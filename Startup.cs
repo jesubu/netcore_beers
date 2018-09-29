@@ -75,7 +75,7 @@ namespace apibeers
 
             app.UserTime(options =>
             {
-                options.SetDefaultMessage();
+                options.SetDefaultMessage("took 2");
             });
 
 
