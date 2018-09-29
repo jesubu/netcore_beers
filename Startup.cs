@@ -2,8 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using apibeers.Data;
-using apibeers.Middleware;
 using Autofac;
 using Autofac.Extensions.DependencyInjection;
 using Microsoft.AspNetCore.Builder;
@@ -14,6 +12,10 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using apibeers.Data;
+using apibeers.Extensions;
+using apibeers.Middleware;
+
 
 namespace apibeers
 {
@@ -64,7 +66,23 @@ namespace apibeers
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
-            app.UseMiddleware<TimerMiddleware>();
+            //app.UseMiddleware<TimerMiddleware>();
+            //app.UserTime();
+            app.UserTime(new TimerMiddlewareOptions()
+            {
+                Text = "Time elapse"
+            });
+
+
+            ////si quisieramos aplicar un middleware especifico a
+            ////todas las peticiones de un pipeline que sean por ejem: admin
+            ////deberiamos de poner lo siguiente:
+            //app.Map("/admin", x =>
+            //{
+            //    x.UseMiddleware<TimerMiddleware>();
+            //});
+            //podemos tener distintos pipeline enfuncion dela url o cabecera.
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -73,7 +91,8 @@ namespace apibeers
             {
                 app.UseHsts();
             }
-            app.UseMiddleware<XMethodOverrideMiddleware>();
+            //app.UseMiddleware<XMethodOverrideMiddleware>();
+            app.UseMethodOverride();
 
             app.UseHttpsRedirection();
             app.UseMvc(x=>x.MapRoute("default","{controller}/{action}"));

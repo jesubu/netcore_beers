@@ -10,9 +10,11 @@ namespace apibeers.Middleware
     public class TimerMiddleware
     {
          private readonly RequestDelegate _next;
-        public TimerMiddleware(RequestDelegate next)
+        private TimerMiddlewareOptions _options;
+        public TimerMiddleware(RequestDelegate next,TimerMiddlewareOptions options)
         {
             _next = next;
+            _options = options;
         }
 
         public async Task Invoke(HttpContext ctx)
@@ -22,7 +24,7 @@ namespace apibeers.Middleware
             await _next.Invoke(ctx);
             watch.Stop();
             var ms = watch.ElapsedMilliseconds;
-            Debug.WriteLine($"Took : {ms}");
+            Debug.WriteLine($"{_options.Text} : {ms}");
         }
     }
 }
