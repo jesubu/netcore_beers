@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using apibeers.Data;
+using apibeers.Middleware;
 using Autofac;
 using Autofac.Extensions.DependencyInjection;
 using Microsoft.AspNetCore.Builder;
@@ -63,6 +64,7 @@ namespace apibeers
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
+            app.UseMiddleware<TimerMiddleware>();
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -71,6 +73,7 @@ namespace apibeers
             {
                 app.UseHsts();
             }
+            app.UseMiddleware<XMethodOverrideMiddleware>();
 
             app.UseHttpsRedirection();
             app.UseMvc(x=>x.MapRoute("default","{controller}/{action}"));

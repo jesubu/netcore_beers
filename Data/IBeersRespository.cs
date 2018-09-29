@@ -9,5 +9,7 @@ namespace apibeers.Data
 
         void Add(Beer beer);
         Beer GetBeerById(int id);
+        bool ContainsBeer(int id);
+        void DeleteBeer(int id);
     }
 }

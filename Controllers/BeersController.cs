@@ -72,5 +72,16 @@ namespace apibeers.Controllers
             return Ok(beer);
 
         }
+
+        [HttpDelete("{id}")]
+        public  IActionResult DeleteBeer(int id)
+        {
+            if (_beersRespository.ContainsBeer(id))
+            {
+                _beersRespository.DeleteBeer(id);
+                return Ok($"Beer with id:{id} delete.");
+            }
+            return NotFound($"Beer with id: {id} not found.");
+        }
     }
 }

@@ -10,7 +10,7 @@ namespace apibeers.Models
 
     {
         [Required]
-        [Range(typeof(decimal), "0", "79228162514264337593543950335",ErrorMessage = "Introduzca un valor mayor que {1}")]
+        //[Range(typeof(decimal), "0", "79228162514264337593543950335",ErrorMessage = "Introduzca un valor mayor que {1}")]
         //[Range(1, int.MaxValue, ErrorMessage = "Introduzca un valor mayor que {1}")]
         public int Id { get; set; }
         public string Name { get; set; }

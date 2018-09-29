@@ -32,5 +32,16 @@ namespace apibeers.Data
         {
             return _beers.SingleOrDefault(x => x.Id == id); //retorna null cuando no hay 
         }
+
+        public bool ContainsBeer(int id)
+        {
+            return _beers.Any(x => x.Id == id);
+        }
+
+        public void DeleteBeer(int id)
+        {
+            var beer = _beers.Single(x => x.Id == id);
+            _beers.Remove(beer);
+        }
     }
 }
