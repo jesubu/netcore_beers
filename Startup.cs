@@ -15,7 +15,7 @@ using Microsoft.Extensions.Options;
 using apibeers.Data;
 using apibeers.Extensions;
 using apibeers.Middleware;
-
+using apibeers.Config;
 
 namespace apibeers
 {
@@ -52,6 +52,10 @@ namespace apibeers
             ////es singleton solo en el contexto, solo en el contexto de la petición
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+
+            //agregamos el enlace a la configuración
+            services.AddOptions();
+            services.Configure<BeersSettings>(Configuration.GetSection("databases"));
 
             var builder = new ContainerBuilder();
 

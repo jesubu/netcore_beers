@@ -2,10 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using apibeers.Config;
 using apibeers.Data;
 using apibeers.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Options;
 
 namespace apibeers.Controllers
 {
@@ -34,10 +36,12 @@ namespace apibeers.Controllers
     public class BeersController : ControllerBase
     {
         private readonly IBeersRespository _beersRespository;
+        private readonly BeersSettings _settings;
 
-        public BeersController( IBeersRespository beersRespository)
+        public BeersController( IBeersRespository beersRespository, IOptions<BeersSettings> settings)
         {
             this._beersRespository = beersRespository;
+            _settings = settings.Value;
 
         }
         [Route("allBeers")]
